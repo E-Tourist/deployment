@@ -1,18 +1,18 @@
-# E-Tourist deployment
+# E-Tourist prerequisites deployment
 ## Install & Run
-### Prerequisites
 You need to:
-1. Clone the repositories below:
+1. Create a new Google API project with services that needs to be turned on (https://console.cloud.google.com/):
+Directions API, Geocoding API, Maps JavaScript API, Places API
+2. Clone the repositories below:
     - backend: https://github.com/E-Tourist/backend.git
     - frontend: https://github.com/E-Tourist/frontend.git
     - deployment: https://github.com/E-Tourist/deployment.git
-2. Use in terminal: 
-`docker-compose -f docker-compose.yml --project-name e-tourist up -d --build --force-recreate` 
-to build all not-commented services in docker-compose.yml
+3. Use in terminal:
+   From `./deployment` -> `docker-compose -f ./docker-compose.yml --project-name e-tourist up -d --build --force-recreate` to build all services in module
 (you can comment out 'backend' and 'frontend' services and run them locally)
-3. Get into: http://localhost:8080/auth (Keycloak Admin Console)
-4. Login with credentials of: admin/password
-5. Configure Keycloak realm:
+4. Get into: http://localhost:8080/auth (Keycloak Admin Console)
+5. Login with credentials of: admin/password
+6. Configure Keycloak realm:
 - create 'E-Tourist' realm and configure it:
 ![img.png](images/img.png)
 ![img_1.png](images/img_1.png)
@@ -24,7 +24,7 @@ to build all not-commented services in docker-compose.yml
 ![img_7.png](images/img_7.png)
 - create your own users and assign them into roles
 ![img_9.png](images/img_9.png)
-6. Setup both frontend and backend - use clients credentials to authenticate backend, frontend by properties:
+7. Setup both frontend and backend - use clients credentials to authenticate backend, frontend by properties:
 - auth server url: http://localhost:8080/auth/
 - realm: 'E-Tourist'
 - resource/clientId: 'backend' or 'frontend'
